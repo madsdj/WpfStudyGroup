@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetManager.DataAccess", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvvm", "Mvvm\Mvvm.csproj", "{682C6904-32F4-40B4-8048-36FEA17A1997}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid", "Solid\Solid.csproj", "{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{682C6904-32F4-40B4-8048-36FEA17A1997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{682C6904-32F4-40B4-8048-36FEA17A1997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{682C6904-32F4-40B4-8048-36FEA17A1997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
