@@ -78,5 +78,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AssetManager.ViewModels\AssetManager.ViewModels.csproj">
+      <Project>{fdaffb27-032c-47c6-8d75-cdff5932cfbf}</Project>
+      <Name>AssetManager.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

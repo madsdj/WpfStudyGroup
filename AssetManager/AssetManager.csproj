@@ -54,18 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="PureConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -92,6 +85,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AssetManager.DataAccess\AssetManager.DataAccess.csproj">
+      <Project>{47284f49-fbbc-4af6-ab61-ea2c12865067}</Project>
+      <Name>AssetManager.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AssetManager.Domain\AssetManager.Domain.csproj">
+      <Project>{b8278ac5-e92f-4057-b68c-baa867767d31}</Project>
+      <Name>AssetManager.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AssetManager.ViewModels\AssetManager.ViewModels.csproj">
+      <Project>{fdaffb27-032c-47c6-8d75-cdff5932cfbf}</Project>
+      <Name>AssetManager.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AssetManager.Views\AssetManager.Views.csproj">
+      <Project>{429400a0-d948-407e-a2bc-4f467ab3a3a5}</Project>
+      <Name>AssetManager.Views</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

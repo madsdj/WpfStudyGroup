@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AssetManager.Views"
+        xmlns:viewmodels="clr-namespace:AssetManager.ViewModels;assembly=AssetManager.ViewModels"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        d:DataContext="{d:DesignInstance viewmodels:MainViewModel, IsDesignTimeCreatable=False}"
+        Title="Asset Manager" Width="1024" Height="720">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding Assets}" SelectedItem="{Binding SelectedAsset}" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Margin="2" ToolTip="{Binding Id}">
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding Capacity, StringFormat={}{0:N2} MW}" />
+                        <TextBlock Text="{Binding Name}" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" />
+
+        <ContentControl Grid.Column="2" Content="{Binding SelectedAsset}" />
+
     </Grid>
 </Window>

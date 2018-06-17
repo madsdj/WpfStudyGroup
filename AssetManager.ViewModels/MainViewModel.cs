@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AssetManager.Domain.Models;
 using AssetManager.Domain.Repositories;
 using Mvvm;
 
@@ -15,6 +17,15 @@ namespace AssetManager.ViewModels
         public MainViewModel(IAssetRepository assetRepository)
         {
             _assetRepository = assetRepository ?? throw new ArgumentNullException(nameof(assetRepository));
+        }
+
+        public IImmutableList<Asset> Assets => _assetRepository.GetAll();
+
+        private Asset _selectedAsset;
+        public Asset SelectedAsset
+        {
+            get { return _selectedAsset; }
+            set { if (_selectedAsset != value) { _selectedAsset = value; RaisePropertyChanged(); } }
         }
     }
 }
