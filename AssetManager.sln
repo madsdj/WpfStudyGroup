@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvvm", "Mvvm\Mvvm.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid", "Solid\Solid.csproj", "{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Principles and Patterns", "Principles and Patterns", "{D5DA8576-F0FD-4A87-AC40-7DFDBCC92B94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{682C6904-32F4-40B4-8048-36FEA17A1997} = {D5DA8576-F0FD-4A87-AC40-7DFDBCC92B94}
+		{C8B0C6DA-5818-4E24-8279-25DD8FFA0F10} = {D5DA8576-F0FD-4A87-AC40-7DFDBCC92B94}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C694D9D7-0ECF-4557-84A0-2AA1A18BC5BC}
