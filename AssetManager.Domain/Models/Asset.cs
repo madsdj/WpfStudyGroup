@@ -1,4 +1,5 @@
 ﻿using System;
+using Solid;
 
 namespace AssetManager.Domain.Models
 {
@@ -6,6 +7,10 @@ namespace AssetManager.Domain.Models
     {
         protected Asset(Guid id, string name, decimal capacity)
         {
+            if (id == Guid.Empty) throw new ArgumentEmptyGuidException(nameof(id));
+            if (name == null) throw new ArgumentNullException(nameof(name));
+            if (name == string.Empty) throw new ArgumentEmptyStringException(nameof(name));
+
             Id = id;
             Name = name;
             Capacity = capacity;

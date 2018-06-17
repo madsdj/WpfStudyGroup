@@ -48,5 +48,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAssetRepository.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Solid\Solid.csproj">
+      <Project>{c8b0c6da-5818-4e24-8279-25dd8ffa0f10}</Project>
+      <Name>Solid</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
