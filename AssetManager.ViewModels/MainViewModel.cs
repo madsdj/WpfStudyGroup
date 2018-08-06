@@ -21,7 +21,7 @@ namespace AssetManager.ViewModels
         public Asset SelectedAsset
         {
             get { return _selectedAsset; }
-            set { if (_selectedAsset != value) { _selectedAsset = value; RaisePropertyChanged(); } }
+            set { Set(ref _selectedAsset, value); }
         }
     }
 }

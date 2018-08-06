@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 namespace Mvvm
@@ -14,14 +13,13 @@ namespace Mvvm
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression)
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
-            if (propertyExpression == null) throw new ArgumentNullException(nameof(propertyExpression));
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
 
-            var memberExpression = propertyExpression.Body as MemberExpression;
-            if (memberExpression == null) throw new ArgumentException("The expression is not a member access expression.", nameof(propertyExpression));
-
-            RaisePropertyChanged(memberExpression.Member.Name);
+            field = value;
+            RaisePropertyChanged(propertyName);
+            return true;
         }
     }
 }
