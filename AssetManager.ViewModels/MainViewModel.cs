@@ -10,11 +10,13 @@ namespace AssetManager.ViewModels
     {
         private readonly IAssetRepository _assetRepository;
 
-        public MainViewModel(IAssetRepository assetRepository)
+        public MainViewModel(IAssetRepository assetRepository, IColorSchemeManager colorSchemeManager)
         {
             _assetRepository = assetRepository ?? throw new ArgumentNullException(nameof(assetRepository));
+            ColorSchemeManager = colorSchemeManager ?? throw new ArgumentNullException(nameof(colorSchemeManager));
         }
 
+        public IColorSchemeManager ColorSchemeManager { get; }
         public IImmutableList<Asset> Assets => _assetRepository.GetAll();
 
         private Asset _selectedAsset;

@@ -48,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorSchemeManager.cs" />
     <Compile Include="Converters\ObjectToPropertiesConverter.cs" />
     <Compile Include="HydroTurbineView.xaml.cs">
       <DependentUpon>HydroTurbineView.xaml</DependentUpon>
@@ -87,6 +88,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ColorSchemes\Blue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorSchemes\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorSchemes\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorSchemes\Pink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HydroTurbineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

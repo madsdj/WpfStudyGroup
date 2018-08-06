@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel>
-        <Border DockPanel.Dock="Top" Background="#EEE" Padding="10">
+        <Border DockPanel.Dock="Top" Background="{DynamicResource HeaderBackground}" Padding="10">
             <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" />
         </Border>
         <Grid>
