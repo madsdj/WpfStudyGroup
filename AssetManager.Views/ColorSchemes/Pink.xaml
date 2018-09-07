@@ -2,11 +2,42 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AssetManager.Views.ColorSchemes">
 
-    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#F80"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#ED008A"/>
     <SolidColorBrush x:Key="Foreground" Color="#FFF" />
-    <SolidColorBrush x:Key="Background" Color="#333" />
-    <SolidColorBrush x:Key="HeaderBackground" Color="#444" />
-    <SolidColorBrush x:Key="SettingsPanelBackground" Color="#555" />
-    <SolidColorBrush x:Key="AssetListBackground" Color="#222" />
+
+    <RectangleGeometry x:Key="HeartsBackground" Rect="0,0,32,32" />
+    <GeometryGroup x:Key="Hearts">
+        <PathGeometry Figures="M0,6C0,0 8,0 8,6 8,0 16,0 16,6 16,10 9,15, 8,16 7,15 0,10 0,6z" />
+        <PathGeometry Figures="M0,6C0,0 8,0 8,6 8,0 16,0 16,6 16,10 9,15, 8,16 7,15 0,10 0,6z">
+            <PathGeometry.Transform>
+                <TranslateTransform X="16" Y="16" />
+            </PathGeometry.Transform>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <DrawingBrush x:Key="Background" Stretch="None" TileMode="Tile" Viewport="0,0,32,32" ViewportUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#FFB2D1" Geometry="{StaticResource HeartsBackground}" />
+                <GeometryDrawing Brush="#FF9BC8" Geometry="{StaticResource Hearts}" />
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <SolidColorBrush x:Key="HeaderBackground" Color="#FF84B9" />
+    <SolidColorBrush x:Key="SettingsPanelBackground" Color="#E0539E" />
+
+    <LinearGradientBrush x:Key="AssetListBackground">
+        <GradientStop Offset="0" Color="#D686BD" />
+        <GradientStop Offset="1" Color="#D868A7" />
+    </LinearGradientBrush>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#700" ShadowDepth="2" BlurRadius="6" />
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
