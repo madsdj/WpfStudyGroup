@@ -34,7 +34,7 @@ namespace AssetManager.ViewModels
             {
                 if (Set(ref _selectedAsset, value))
                 {
-                    SelectedAssetDetails = _assetDetailsViewModelFactory(value.Model);
+                    SelectedAssetDetails = value != null ? _assetDetailsViewModelFactory(value.Model) : null;
                 }
             }
         }
@@ -43,7 +43,7 @@ namespace AssetManager.ViewModels
         public AssetDetailsViewModel SelectedAssetDetails
         {
             get { return _selectedAssetDetails; }
-            set { Set(ref _selectedAssetDetails, value); }
+            private set { Set(ref _selectedAssetDetails, value); }
         }
     }
 }

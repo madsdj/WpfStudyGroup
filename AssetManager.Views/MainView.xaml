@@ -36,16 +36,7 @@
 
             <ListBox ItemsSource="{Binding Assets}" SelectedItem="{Binding SelectedAsset}" HorizontalContentAlignment="Stretch"
                      Background="{DynamicResource AssetListBackground}" BorderThickness="0"
-                     TextElement.Foreground="{DynamicResource Foreground}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel Margin="2" ToolTip="{Binding Id}" DataContext="{Binding Model}">
-                            <TextBlock DockPanel.Dock="Right" Text="{Binding Capacity, StringFormat={}{0:N2} MW}" />
-                            <TextBlock Text="{Binding Name}" />
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                     TextElement.Foreground="{DynamicResource Foreground}" />
 
             <ContentControl Grid.Column="1">
                 <Binding Path="SelectedAssetDetails">

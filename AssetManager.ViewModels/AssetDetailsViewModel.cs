@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using AssetManager.Domain.Models;
+using AssetManager.Domain.Services;
 using Mvvm;
 
 namespace AssetManager.ViewModels
@@ -13,9 +10,12 @@ namespace AssetManager.ViewModels
     {
         public delegate AssetDetailsViewModel Factory(Asset model);
 
-        public AssetDetailsViewModel(Asset model)
+        private readonly IRemoteControlService _remoteControlService;
+
+        public AssetDetailsViewModel(Asset model, IRemoteControlService remoteControlService)
         {
-            Model = model;
+            Model = model ?? throw new ArgumentNullException(nameof(model));
+            _remoteControlService = remoteControlService ?? throw new ArgumentNullException(nameof(remoteControlService));
         }
 
         public Asset Model { get; }
@@ -24,14 +24,14 @@ namespace AssetManager.ViewModels
 
         public void Start()
         {
-            throw new NotImplementedException();
+            _remoteControlService.Start(Model.Id);
         }
 
         public ICommand StopCommand => new RelayCommand(Stop);
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            _remoteControlService.Stop(Model.Id);
         }
     }
 }
