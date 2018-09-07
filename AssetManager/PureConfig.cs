@@ -12,7 +12,7 @@ namespace AssetManager
             IColorSchemeManager colorSchemeManager = new ColorSchemeManager();
             IAssetRepository assetRepository = new AssetRepository();
             AssetStateRepository assetStateRepository = new AssetStateRepository();
-            return new MainViewModel(assetRepository, colorSchemeManager, a => new AssetViewModel(a, assetStateRepository), a => new AssetDetailsViewModel(a, assetStateRepository));
+            return new MainViewModel(assetRepository, colorSchemeManager, a => new AssetViewModel(a, assetStateRepository), a => new AssetDetailsViewModel(a, assetStateRepository, assetStateRepository));
         }
     }
 }
