@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetDetailsViewModel.cs" />
+    <Compile Include="AssetViewModel.cs" />
     <Compile Include="IColorSchemeManager.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

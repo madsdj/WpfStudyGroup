@@ -11,7 +11,7 @@ namespace AssetManager
         {
             IColorSchemeManager colorSchemeManager = new ColorSchemeManager();
             IAssetRepository assetRepository = new AssetRepository();
-            return new MainViewModel(assetRepository, colorSchemeManager);
+            return new MainViewModel(assetRepository, colorSchemeManager, a => new AssetViewModel(a), a => new AssetDetailsViewModel(a));
         }
     }
 }

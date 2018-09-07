@@ -48,11 +48,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorSchemeManager.cs" />
-    <Compile Include="Converters\ObjectToPropertiesConverter.cs" />
-    <Compile Include="HydroTurbineView.xaml.cs">
-      <DependentUpon>HydroTurbineView.xaml</DependentUpon>
+    <Compile Include="AssetDetailsView.xaml.cs">
+      <DependentUpon>AssetDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AssetView.xaml.cs">
+      <DependentUpon>AssetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorSchemeManager.cs" />
+    <Compile Include="Converters\AssetToImageConverter.cs" />
+    <Compile Include="Converters\ObjectToPropertiesConverter.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -72,12 +76,6 @@
     <Compile Include="PropertyView.xaml.cs">
       <DependentUpon>PropertyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SolarPanelGroupView.xaml.cs">
-      <DependentUpon>SolarPanelGroupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WindTurbineView.xaml.cs">
-      <DependentUpon>WindTurbineView.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -88,6 +86,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AssetDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ColorSchemes\Blue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HydroTurbineView.xaml">
+    <Page Include="Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,11 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SolarPanelGroupView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WindTurbineView.xaml">
+    <Page Include="ViewModelToViewTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,6 +135,10 @@
     <ProjectReference Include="..\AssetManager.ViewModels\AssetManager.ViewModels.csproj">
       <Project>{fdaffb27-032c-47c6-8d75-cdff5932cfbf}</Project>
       <Name>AssetManager.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mvvm\Mvvm.csproj">
+      <Project>{682c6904-32f4-40b4-8048-36fea17a1997}</Project>
+      <Name>Mvvm</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

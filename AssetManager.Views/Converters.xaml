@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:domain="clr-namespace:AssetManager.Domain.Models;assembly=AssetManager.Domain"
+                    xmlns:converters="clr-namespace:AssetManager.Views.Converters"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <converters:AssetToImageConverter x:Key="AssetToImage">
+        <converters:AssetToImageConverter.ImageSources>
+            <sys:String x:Key="{x:Type domain:WindTurbine}">http://files.gereports.com/wp-content/uploads/2009/09/turbines.jpg</sys:String>
+            <sys:String x:Key="{x:Type domain:HydroTurbine}">http://www.hydrolink.cz/prilohy/12/francisloiskaasetrvank.JPG</sys:String>
+            <sys:String x:Key="{x:Type domain:SolarPanelGroup}">https://56wli1ai9e513osyg1bsfxyx-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/China-Makes-2017-a-Global-Hit-for-Solar-Energy.jpg</sys:String>
+        </converters:AssetToImageConverter.ImageSources>
+    </converters:AssetToImageConverter>
+    <converters:ObjectToPropertiesConverter x:Key="ObjectToProperties" />
+</ResourceDictionary>

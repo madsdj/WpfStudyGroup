@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AssetManager.Views
 {
     /// <summary>
-    /// Interaction logic for HydroTurbineView.xaml
+    /// Interaction logic for AssetDetailsView.xaml
     /// </summary>
-    public partial class HydroTurbineView : UserControl
+    public partial class AssetDetailsView : UserControl
     {
-        public HydroTurbineView()
+        public AssetDetailsView()
         {
             InitializeComponent();
         }

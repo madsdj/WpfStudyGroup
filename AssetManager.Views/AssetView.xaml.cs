@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AssetManager.Views
 {
     /// <summary>
-    /// Interaction logic for SolarPanelGroupView.xaml
+    /// Interaction logic for AssetView.xaml
     /// </summary>
-    public partial class SolarPanelGroupView : UserControl
+    public partial class AssetView : UserControl
     {
-        public SolarPanelGroupView()
+        public AssetView()
         {
             InitializeComponent();
         }

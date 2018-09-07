@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace AssetManager.Views.Converters
 {
-    public class ObjectToPropertiesConverter : IValueConverter
+    public class AssetToImageConverter : IValueConverter
     {
+        public Dictionary<Type, string> ImageSources { get; } = new Dictionary<Type, string>();
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) return null;
-
-            return value
-                .GetType()
-                .GetProperties()
-                .OrderBy(pi => pi.Name)
-                .Select(pi => new { pi.Name, Value = pi.GetValue(value) })
-                .ToImmutableList();
+            return ImageSources[value.GetType()];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
