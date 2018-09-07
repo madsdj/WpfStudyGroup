@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#ED008A"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFC4EB" />
     <SolidColorBrush x:Key="Foreground" Color="#FFF" />
 
     <RectangleGeometry x:Key="HeartsBackground" Rect="0,0,32,32" />
