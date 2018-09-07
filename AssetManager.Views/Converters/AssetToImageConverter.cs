@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace AssetManager.Views.Converters
 {
     public class AssetToImageConverter : IValueConverter
     {
-        public string FallbackValue { get; set; }
-        public Dictionary<Type, string> ImageSources { get; } = new Dictionary<Type, string>();
+        public ImageSource FallbackValue { get; set; }
+        public Dictionary<Type, ImageSource> ImageSources { get; } = new Dictionary<Type, ImageSource>();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null) return null;
-            if (ImageSources.TryGetValue(value.GetType(), out string s)) return s;
+            if (ImageSources.TryGetValue(value.GetType(), out ImageSource imageSource)) return imageSource;
             return FallbackValue;
         }
 
