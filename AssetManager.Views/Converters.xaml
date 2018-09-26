@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:domain="clr-namespace:AssetManager.Domain.Models;assembly=AssetManager.Domain"
                     xmlns:converters="clr-namespace:AssetManager.Views.Converters">
-    <converters:AssetToImageConverter x:Key="AssetToImage">
+    <converters:AssetToImageConverter x:Key="AssetToImage" FallbackValue="{StaticResource FallbackImage}">
         <converters:AssetToImageConverter.ImageSources>
             <BitmapImage x:Key="{x:Type domain:WindTurbine}" UriSource="http://files.gereports.com/wp-content/uploads/2009/09/turbines.jpg" />
             <BitmapImage x:Key="{x:Type domain:HydroTurbine}" UriSource="http://www.hydrolink.cz/prilohy/12/francisloiskaasetrvank.JPG" />

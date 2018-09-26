@@ -3,9 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:domain="clr-namespace:AssetManager.Domain.Models;assembly=AssetManager.Domain"
         xmlns:viewmodels="clr-namespace:AssetManager.ViewModels;assembly=AssetManager.ViewModels"
-        xmlns:views="clr-namespace:AssetManager.Views"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewmodels:MainViewModel, IsDesignTimeCreatable=False}"
         Title="Asset Manager" Width="1024" Height="720" TextElement.Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background}">
@@ -17,7 +15,7 @@
                         <Binding>
                             <Binding.Source>
                                 <ObjectDataProvider xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                                                MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                                                    MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
                                     <ObjectDataProvider.MethodParameters>
                                         <x:Type TypeName="viewmodels:ColorScheme" />
                                     </ObjectDataProvider.MethodParameters>

@@ -45,6 +45,7 @@
     <Compile Include="Models\AssetState.cs" />
     <Compile Include="Models\HydroTurbine.cs" />
     <Compile Include="Models\SolarPanelGroup.cs" />
+    <Compile Include="Models\UnknownAsset.cs" />
     <Compile Include="Models\WindTurbine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAssetRepository.cs" />

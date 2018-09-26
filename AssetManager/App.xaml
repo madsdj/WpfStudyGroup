@@ -5,6 +5,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/AssetManager.Views;component/ColorSchemes/Light.xaml" />
+                <ResourceDictionary Source="/AssetManager.Views;component/DrawingImages.xaml" />
                 <ResourceDictionary Source="/AssetManager.Views;component/Converters.xaml" />
                 <ResourceDictionary Source="/AssetManager.Views;component/ViewModelToViewTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>

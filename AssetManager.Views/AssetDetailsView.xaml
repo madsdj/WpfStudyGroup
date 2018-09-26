@@ -22,7 +22,7 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <views:PropertyView DataContext="{Binding Model}" />
-            <Image Grid.Column="1" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Model, Converter={StaticResource AssetToImage}}" />
+            <Image Grid.Column="1" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Model, Converter={StaticResource AssetToImage}, IsAsync=True}" />
 
             <Button Grid.Column="0" Grid.Row="1" Margin="8" Command="{Binding StartCommand}">Start</Button>
             <Button Grid.Column="1" Grid.Row="1" Margin="8" Command="{Binding StopCommand}">Stop</Button>

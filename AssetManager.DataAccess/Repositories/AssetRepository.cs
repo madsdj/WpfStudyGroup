@@ -59,6 +59,12 @@ namespace AssetManager.DataAccess.Repositories
                     name: "HydroTurbine 1",
                     capacity: 2.5M,
                     reservoirCapacity: 100
+                ),
+                new UnknownAsset
+                (
+                    id: Guid.NewGuid(),
+                    name: "Unknown 1",
+                    capacity: 50M
                 )
             );
         }
