@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Solid
 {
-    public struct Maybe<T> : IEquatable<Maybe<T>>
+    public struct Maybe<T> : IEquatable<Maybe<T>>, IEnumerable<T>
     {
         public static Maybe<T> None { get; } = default(Maybe<T>);
         public static Maybe<T> Some(T value) => new Maybe<T>(value);
@@ -20,6 +22,16 @@ namespace Solid
         public T Value => HasValue ? _value : throw new InvalidCastException($"Unable to access {nameof(Value)} of {nameof(Maybe<T>)}, when no value is set. Always check {nameof(HasValue)} or use the {nameof(GetValueOrDefault)} method.");
         public bool HasValue { get; }
 
+        public static implicit operator Maybe<T>(T value)
+        {
+            return new Maybe<T>(value);
+        }
+
+        public static implicit operator Maybe<T>(Maybe value)
+        {
+            return None;
+        }
+
         public static bool operator ==(Maybe<T> m1, Maybe<T> m2)
         {
             if (m1.HasValue != m2.HasValue) return false;
@@ -30,16 +42,6 @@ namespace Solid
         {
             if (m1.HasValue != m2.HasValue) return true;
             return m1.HasValue && !m1.Value.Equals(m2.Value);
-        }
-
-        public static implicit operator Maybe<T>(T value)
-        {
-            return new Maybe<T>(value);
-        }
-
-        public static implicit operator Maybe<T>(Maybe value)
-        {
-            return None;
         }
 
         public bool Equals(Maybe<T> other)
@@ -79,6 +81,32 @@ namespace Solid
                 return new Maybe<TResult>(selector(Value));
             else
                 return new Maybe<TResult>();
+        }
+
+        public Maybe<TResult> Cast<TResult>()
+        {
+            if (HasValue)
+                return Maybe<TResult>.Some((TResult)(object)Value);
+            else
+                return Maybe<TResult>.None;
+        }
+
+        public Maybe<TResult> OfType<TResult>()
+        {
+            if (HasValue && Value is TResult)
+                return Maybe<TResult>.Some((TResult)(object)Value);
+            else
+                return Maybe<TResult>.None;
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            if (HasValue) yield return Value;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            if (HasValue) yield return Value;
         }
     }
 
