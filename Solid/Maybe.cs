@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Solid
 {
-    public struct Maybe<T> : IEquatable<Maybe<T>>, IEnumerable<T>
+    public struct Maybe<T> : IMaybe, IEquatable<Maybe<T>>, IEnumerable<T>
     {
         public static Maybe<T> None { get; } = default(Maybe<T>);
         public static Maybe<T> Some(T value) => new Maybe<T>(value);
@@ -19,29 +19,24 @@ namespace Solid
             HasValue = true;
         }
 
+        object IMaybe.Value => Value;
+
         public T Value => HasValue ? _value : throw new InvalidCastException($"Unable to access {nameof(Value)} of {nameof(Maybe<T>)}, when no value is set. Always check {nameof(HasValue)} or use the {nameof(GetValueOrDefault)} method.");
         public bool HasValue { get; }
 
-        public static implicit operator Maybe<T>(T value)
-        {
-            return new Maybe<T>(value);
-        }
-
-        public static implicit operator Maybe<T>(Maybe value)
-        {
-            return None;
-        }
+        public static implicit operator Maybe<T>(T value) => new Maybe<T>(value);
+        public static implicit operator Maybe<T>(Maybe value) => None;
 
         public static bool operator ==(Maybe<T> m1, Maybe<T> m2)
         {
             if (m1.HasValue != m2.HasValue) return false;
-            return !m1.HasValue || m1.Value.Equals(m2.Value);
+            return !m1.HasValue || EqualityComparer<T>.Default.Equals(m1.Value, m2.Value);
         }
 
         public static bool operator !=(Maybe<T> m1, Maybe<T> m2)
         {
             if (m1.HasValue != m2.HasValue) return true;
-            return m1.HasValue && !m1.Value.Equals(m2.Value);
+            return m1.HasValue && !EqualityComparer<T>.Default.Equals(m1.Value, m2.Value);
         }
 
         public bool Equals(Maybe<T> other)
@@ -61,10 +56,7 @@ namespace Solid
 
         public override string ToString()
         {
-            if (HasValue)
-                return $"Some: {Value}";
-            else
-                return "None";
+            return HasValue ? $"Some: {Value}" : "None";
         }
 
         public T GetValueOrDefault(T defaultValue = default(T))
@@ -74,8 +66,7 @@ namespace Solid
 
         public Maybe<TResult> Select<TResult>(Func<T, TResult> selector)
         {
-            if (selector == null)
-                throw new ArgumentNullException(nameof(selector));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
             if (HasValue)
                 return new Maybe<TResult>(selector(Value));
@@ -99,6 +90,19 @@ namespace Solid
                 return Maybe<TResult>.None;
         }
 
+        public TResult Match<TResult>(Func<T, TResult> some, TResult none)
+        {
+            if (some == null) throw new ArgumentNullException(nameof(some));
+            return HasValue ? some(Value) : none;
+        }
+
+        public TResult Match<TResult>(Func<T, TResult> some, Func<TResult> none)
+        {
+            if (some == null) throw new ArgumentNullException(nameof(some));
+            if (none == null) throw new ArgumentNullException(nameof(none));
+            return HasValue ? some(Value) : none();
+        }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             if (HasValue) yield return Value;
@@ -117,5 +121,7 @@ namespace Solid
         public static Maybe None { get; } = new Maybe();
         public static Maybe<T> Some<T>(T value) => new Maybe<T>(value);
         public static Maybe<T> Some<T>(T? value) where T : struct => value.HasValue ? new Maybe<T>(value.Value) : Maybe<T>.None;
+        public static Maybe<T> NoneIfNull<T>(T value) where T : class => value is null ? Maybe<T>.None : new Maybe<T>(value);
+        public static Maybe<T> NoneIfNull<T>(T? value) where T : struct => value is null ? Maybe<T>.None : new Maybe<T>(value.Value);
     }
 }
