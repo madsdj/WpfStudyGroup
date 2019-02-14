@@ -103,6 +103,17 @@ namespace Solid
             return HasValue ? some(Value) : none();
         }
 
+        public void Match(Action<T> some, Action none)
+        {
+            if (some == null) throw new ArgumentNullException(nameof(some));
+            if (none == null) throw new ArgumentNullException(nameof(none));
+
+            if (HasValue)
+                some(Value);
+            else
+                none();
+        }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             if (HasValue) yield return Value;
